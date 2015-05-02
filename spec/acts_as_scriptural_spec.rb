@@ -11,18 +11,21 @@ describe ActsAsScriptural do
       end
     end
   end
-end
 
-=begin
   describe "Instance Methods" do
     describe "#parse_chapters receives a valid reference" do
-      it "should store the numjkk
-      bookname = "Genesis"
-
-      result = ActsAsScriptural.parse_book(bookname)
-
-      expect(result).to eq 1
+      it "should store one book name in #book_names" do
+        result = ActsAsScriptural.new.parse("Gen 1-9")
+        expect(result.book_names).to eq ["Genesis"] 
+      end
+      it "should store multiple book names in #book_names" do
+        result = ActsAsScriptural.new.parse("Genesis 1, Exodus 1")
+        expect(result.book_names).to match_array  ["Genesis", "Exodus"] 
+      end
     end
+  end
+end
+=begin
     it "parse_book receives a partial book string returns an integer" do
       bookname = "Ex"
 
