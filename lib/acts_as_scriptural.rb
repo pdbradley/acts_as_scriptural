@@ -1,11 +1,12 @@
 require_relative "acts_as_scriptural/version"
-require_relative "acts_as_scriptural/bible_info"
 require_relative "acts_as_scriptural/book"
 require 'pry'
+require 'abbrev'
 
 class ActsAsScriptural
 
-  attr_accessor :valid, :errors
+  attr_accessor :valid, :errors, 
+    :abbreviation_lookup_hash
 
   def initialize
     @data = Hash.new
@@ -25,7 +26,7 @@ class ActsAsScriptural
   private
 
   def book_names
-    @data.values.each {|i| i.book_name }
+    @data.map{|k,v| v.name }
   end
 
 

@@ -1,9 +1,22 @@
 require 'spec_helper'
 
+
 describe ActsAsScriptural do
 
   describe "Class Methods" do
-    it "parse_book receives a valid book string returns an integer" do
+    describe "#new" do
+      it "should have an abbrev lookup hash for books" do
+        foo = ActsAsScriptural.new
+        expect(foo.abbreviation_lookup_hash).to be_a Hash
+      end
+    end
+  end
+end
+
+=begin
+  describe "Instance Methods" do
+    describe "#parse_chapters receives a valid reference" do
+      it "should store the numjkk
       bookname = "Genesis"
 
       result = ActsAsScriptural.parse_book(bookname)
@@ -26,3 +39,4 @@ describe ActsAsScriptural do
     end
   end
 end
+=end
