@@ -18,7 +18,7 @@ class ActsAsScriptural
       @data[book_name] = Book.new(book_name, book_index.to_i, num_chapters.to_i)
     end
 
-    @abbreviation_lookup_hash ||= data_book_names.abbrev.map{|k,v| [k.strip.downcase,v]}.to_h
+    @abbreviation_lookup_hash ||= data_book_names.abbrev.map{|k,v| [k.gsub(' ','').downcase,v]}.to_h
   end
 
   def parse(str)
@@ -36,7 +36,7 @@ class ActsAsScriptural
       else
         chapters = [ match[2] ]
       end
-      [ match[1].gsub(/ /, ""), chapters.map(&:to_i) ]
+      [ match[1], chapters.map(&:to_i) ]
     else
       [nil, nil]
     end

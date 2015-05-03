@@ -13,14 +13,16 @@ describe ActsAsScriptural do
   end
 
   describe "Instance Methods" do
-    describe "#parse_chapters receives a valid reference" do
-      it "should store one book name in #book_names" do
-        result = ActsAsScriptural.new.parse("Gen 1-9")
-        expect(result.book_names).to eq ["Genesis"] 
-      end
-      it "should store multiple book names in #book_names" do
-        result = ActsAsScriptural.new.parse("Genesis 1, Exodus 1")
-        expect(result.book_names).to match_array  ["Genesis", "Exodus"] 
+    describe "parse receives a valid reference" do
+      describe "#book_names" do
+        it "one book name" do
+          result = ActsAsScriptural.new.parse("Gen 1-9")
+          expect(result.book_names).to eq ["Genesis"] 
+        end
+        it "multiple book names" do
+          result = ActsAsScriptural.new.parse("Genesis 1-9, Exodus 1-30, 1 John 1-2")
+          expect(result.book_names).to match_array  ["Genesis", "Exodus", "1 John"] 
+        end
       end
     end
   end
