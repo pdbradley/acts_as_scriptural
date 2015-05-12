@@ -1,4 +1,4 @@
-class Book
+class ActsAsScriptural::Book
 
   def initialize(name, index, num_chapters)
     @name = name
