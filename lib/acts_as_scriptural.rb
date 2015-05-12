@@ -4,7 +4,9 @@ require_relative "acts_as_scriptural/bible"
 require_relative "acts_as_scriptural/parser"
 require_relative "acts_as_scriptural/abbreviation_lookup"
 
-require 'pry'
+  require 'pry'
+
+
 
 class ActsAsScriptural
 
