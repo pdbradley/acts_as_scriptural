@@ -19,8 +19,7 @@ class ActsAsScriptural
   end
 
   def add_chapters(parsed)
-    book_index = lookup.index_number(parsed.start_book)
-    if book_index && parsed.chapters
+    if parsed.start_book_index && parsed.chapters
       parsed.chapters.each do |c|
         @chapters << [book_index, c] if bible.chapter_exists?(book_index, c)
       end

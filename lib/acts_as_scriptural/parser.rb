@@ -1,19 +1,24 @@
 class ActsAsScriptural::Parser
   require 'ostruct'
 
-  def self.book_and_chapters_from_reference(reference)
+  def self.parse_reference(reference)
     result = OpenStruct.new
     regex = /^\s*([0-9]?\s*[a-zA-Z]+)\.?\s*([0-9]+)(?:\s*(?:-|..)[^0-9]*([0-9]+))?/
     match = reference.match(regex)
     if match
       if match[3]
-        result.chapters = (match[2]..match[3]).to_a
+        result.first_book = match[1]
+        result.last_book = match[1]
+        result.first_chapter = match[2].to_i
+        result.last_chapter = match[3].to_i
       else
-        result.chapters = [ match[2] ]
+        result.first_book = match[1]
+        result.last_book = match[1]
+        result.first_chapter = match[2].to_i
+        result.last_chapter = match[2].to_i
       end
-        result.start_book = match[1]
-        result.book_index = ActsAsScriptural::AbbreviationLookup.new.index_number(result.start_book)
-        result.chapters.map!(&:to_i)
+        result.first_book_index = ActsAsScriptural::AbbreviationLookup.new.index_number(result.first_book)
+        result.last_book_index = ActsAsScriptural::AbbreviationLookup.new.index_number(result.first_book)
         result
     else
       nil
