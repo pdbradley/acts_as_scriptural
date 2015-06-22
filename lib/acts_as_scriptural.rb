@@ -1,6 +1,6 @@
 class ActsAsScriptural
 
-  attr_accessor :chapters
+  attr_accessor :chapters, :parsed
 
   def initialize
     @chapters = Array.new
@@ -8,19 +8,20 @@ class ActsAsScriptural
 
   def parse(str)
     references = str.split(',')
-    references.each {|ref| parse_a_reference(ref) }
+    references.each do |ref| 
+      add_chapters(parse_a_reference(ref))
+    end
     self
   end
 
   def parse_a_reference(reference)
-    parsed = Parser.book_and_chapters_from_reference(reference)
-    add_chapters(parsed.start_book, parsed.chapters)
+    Parser.book_and_chapters_from_reference(reference)
   end
 
-  def add_chapters(book, chapters)
-    book_index = lookup.index_number(book)
-    if book_index && chapters
-      chapters.each do |c|
+  def add_chapters(parsed)
+    book_index = lookup.index_number(parsed.start_book)
+    if book_index && parsed.chapters
+      parsed.chapters.each do |c|
         @chapters << [book_index, c] if bible.chapter_exists?(book_index, c)
       end
     end
