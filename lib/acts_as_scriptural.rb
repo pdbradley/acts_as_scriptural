@@ -1,10 +1,3 @@
-require_relative "acts_as_scriptural/version"
-require_relative "acts_as_scriptural/book"
-require_relative "acts_as_scriptural/bible"
-require_relative "acts_as_scriptural/parser"
-require_relative "acts_as_scriptural/abbreviation_lookup"
-
-  require 'pry'
 
 
 
@@ -46,3 +39,8 @@ class ActsAsScriptural
 
 
 end
+
+require_relative "acts_as_scriptural/book"
+require_relative "acts_as_scriptural/bible"
+require_relative "acts_as_scriptural/parser"
+require_relative "acts_as_scriptural/abbreviation_lookup"

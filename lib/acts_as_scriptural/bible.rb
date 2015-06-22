@@ -23,8 +23,7 @@ class ActsAsScriptural::Bible
   private
 
   def import_from_file
-    datadir = Gem.datadir('acts_as_scriptural')
-    File.readlines("#{datadir}/english.txt").each do |line|
+    File.readlines("data/acts_as_scriptural/english.txt").each do |line|
       book_name, book_index, num_chapters = line.chomp.split(',')
       book = ActsAsScriptural::Book.new(book_name, book_index.to_i, num_chapters.to_i)
       @namehash[book_name] = book

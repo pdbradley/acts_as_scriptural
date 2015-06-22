@@ -1,8 +1,6 @@
-require_relative 'lib/acts_as_scriptural/version'
-
 Gem::Specification.new do |spec|
   spec.name          = "acts_as_scriptural"
-  spec.version       = ActsAsScriptural::VERSION
+  spec.version       = '0.0.1'
   spec.authors       = ["Philip Bradley"]
   spec.email         = ["pdbradley@gmail.com"]
   spec.summary       = %q{Parse multibook, multiverse bible references}
@@ -16,16 +14,16 @@ Gem::Specification.new do |spec|
                         "lib/acts_as_scriptural/bible.rb",
                         "lib/acts_as_scriptural/book.rb",
                         "lib/acts_as_scriptural/abbreviation_lookup.rb",
-                        "lib/acts_as_scriptural/version.rb"
+                        "data/acts_as_scriptural/english.txt"
                         ]
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
 
-  spec.add_development_dependency "pry"
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", '~> 0'
   spec.add_development_dependency "rspec", '~> 3'
+  spec.add_development_dependency "pry"
 
 end
