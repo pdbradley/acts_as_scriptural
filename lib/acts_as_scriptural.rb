@@ -1,6 +1,3 @@
-
-
-
 class ActsAsScriptural
 
   attr_accessor :chapters
@@ -16,8 +13,8 @@ class ActsAsScriptural
   end
 
   def parse_a_reference(reference)
-    book, chapters = Parser.book_and_chapters_from_reference(reference)
-    add_chapters(book, chapters)
+    parsed = Parser.book_and_chapters_from_reference(reference)
+    add_chapters(parsed.start_book, parsed.chapters)
   end
 
   def add_chapters(book, chapters)
