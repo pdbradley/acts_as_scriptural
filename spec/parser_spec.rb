@@ -33,4 +33,12 @@ describe ActsAsScriptural::Parser do
     expect(result.last_book_index).to eq 40
     expect(result.last_chapter).to eq 28
   end
+  it "correctly parses a chapter range that is nonsensical" do
+    result = ActsAsScriptural::Parser.new.parse_reference("Gen 0-Mat 29")
+
+    expect(result.first_book_index).to eq 1
+    expect(result.first_chapter).to eq 1
+    expect(result.last_book_index).to eq 40
+    expect(result.last_chapter).to eq 28
+  end
 end

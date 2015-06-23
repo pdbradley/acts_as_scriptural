@@ -9,16 +9,28 @@ class ActsAsScriptural
   def parse(str)
     references = str.split(',')
     references.each do |ref| 
-      add_chapters(Parser.parse_reference(str))
+      add_chapters(Parser.new.parse_reference(ref))
     end
     self
   end
 
   def add_chapters(parsed_reference)
-    binding.pry
-    if parsed.start_book_index && parsed.chapters
-      parsed.chapters.each do |c|
-        @chapters << [book_index, c] if bible.chapter_exists?(book_index, c)
+    for i in parsed_reference.first_book_index..parsed_reference.last_book_index do
+
+      if (i == parsed_reference.first_book_index)
+        first_chapter = parsed_reference.first_chapter
+      else
+        first_chapter = 1
+      end
+
+      if (i == parsed_reference.last_book_index)
+        last_chapter = parsed_reference.last_chapter
+      else
+        last_chapter = bible.chapters_in_book(i)
+      end
+
+      for j in first_chapter..last_chapter
+        @chapters << [i, j]
       end
     end
   end

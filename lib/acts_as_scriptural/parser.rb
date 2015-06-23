@@ -30,19 +30,28 @@ class ActsAsScriptural::Parser
       end
         result.first_book_index = ActsAsScriptural::AbbreviationLookup.new.index_number(result.first_book)
         result.last_book_index = ActsAsScriptural::AbbreviationLookup.new.index_number(result.last_book)
+        result = validate_chapter_ranges(result)
         result
     else
       nil
     end
   end
 
+  def validate_chapter_ranges(result)
+    # doesn't allow nonsensical chapter numbers
+    bible = ActsAsScriptural::Bible.new
+    max_first_book_chapters = bible.chapters_in_book(result.first_book_index)
+    max_last_book_chapters = bible.chapters_in_book(result.last_book_index)
+
+    result.first_chapter = 1 if result.first_chapter < 1
+    result.last_chapter = 1 if result.first_chapter < 1
+    result.first_chapter = max_first_book_chapters if result.first_chapter > max_first_book_chapters
+    result.last_chapter = max_last_book_chapters if result.last_chapter > max_last_book_chapters
+
+    result
+  end
+
 
 end
 
 
-#^\s*  whitespace
-#([0-9]?\s*[a-zA-Z]+)\.?  bookname match[1]
-#\s* whitespace
-#([0-9]+) number match[2] 
-#(?:\s*(?:-|..)[^0-9]*([0-9]+))
-#?/

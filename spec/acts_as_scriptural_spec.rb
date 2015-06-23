@@ -4,6 +4,10 @@ require 'spec_helper'
 describe ActsAsScriptural do
 
   describe "#parse valid references" do
+    it "parses a range that spans books" do
+      result = ActsAsScriptural.new.parse("Matt 27-Mark 2")
+      expect(result.chapters).to eq [[40,27],[40,28],[41,1],[41,2]]
+    end
     it "parses a single book abbreviation and chapter" do
       result = ActsAsScriptural.new.parse("Gen 1")
       expect(result.chapters).to eq [[1,1]]
