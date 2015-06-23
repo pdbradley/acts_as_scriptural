@@ -13,3 +13,4 @@
 *.a
 kmf.log
 quickfix.out
+*.gem
