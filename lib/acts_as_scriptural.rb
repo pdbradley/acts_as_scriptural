@@ -9,13 +9,9 @@ class ActsAsScriptural
   def parse(str)
     references = str.split(',')
     references.each do |ref| 
-      add_chapters(parse_a_reference(ref))
+      add_chapters(Parser.parse_reference(str))
     end
     self
-  end
-
-  def parse_a_reference(reference)
-    Parser.book_and_chapters_from_reference(reference)
   end
 
   def add_chapters(parsed)
@@ -41,3 +37,4 @@ require_relative "acts_as_scriptural/book"
 require_relative "acts_as_scriptural/bible"
 require_relative "acts_as_scriptural/parser"
 require_relative "acts_as_scriptural/abbreviation_lookup"
+require_relative "acts_as_scriptural/parsed_reference"

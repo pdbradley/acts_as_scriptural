@@ -2,7 +2,7 @@ class ActsAsScriptural::Parser
   require 'ostruct'
 
   def self.parse_reference(reference)
-    result = OpenStruct.new
+    result = ParsedReference.new
     # this reference needs to have no spaces to be parsed properly;
     # the matches will contain (if applicable)
     # match 1: first book name
