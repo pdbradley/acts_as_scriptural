@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
                         "lib/acts_as_scriptural/parser.rb",
                         "lib/acts_as_scriptural/bible.rb",
                         "lib/acts_as_scriptural/book.rb",
+                        "lib/acts_as_scriptural/parsed_reference.rb",
                         "lib/acts_as_scriptural/abbreviation_lookup.rb",
                         "data/acts_as_scriptural/english.txt"
                         ]

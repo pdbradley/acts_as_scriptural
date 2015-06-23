@@ -20,6 +20,10 @@ class ActsAsScriptural::Bible
       chapter_number.between?(1, @indexhash[book_index].num_chapters) 
   end
 
+  def chapters_in_book(book_index)
+    @indexhash[book_index].num_chapters
+  end
+
   private
 
   def import_from_file

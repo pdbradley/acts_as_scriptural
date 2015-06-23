@@ -1,7 +1,7 @@
 class ActsAsScriptural::Parser
   require 'ostruct'
 
-  def self.parse_reference(reference)
+  def parse_reference(reference)
     result = ParsedReference.new
     # this reference needs to have no spaces to be parsed properly;
     # the matches will contain (if applicable)

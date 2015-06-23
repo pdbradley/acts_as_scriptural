@@ -14,7 +14,8 @@ class ActsAsScriptural
     self
   end
 
-  def add_chapters(parsed)
+  def add_chapters(parsed_reference)
+    binding.pry
     if parsed.start_book_index && parsed.chapters
       parsed.chapters.each do |c|
         @chapters << [book_index, c] if bible.chapter_exists?(book_index, c)
