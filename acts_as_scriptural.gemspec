@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "acts_as_scriptural"
-  spec.version       = '0.0.1'
+  spec.version       = '0.0.2'
   spec.authors       = ["Philip Bradley"]
   spec.email         = ["pdbradley@gmail.com"]
   spec.summary       = %q{Parse multibook, multiverse bible references}
@@ -25,6 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", '~> 0'
   spec.add_development_dependency "rspec", '~> 3'
-  spec.add_development_dependency "pry"
+  spec.add_development_dependency 'pry', '~> 0'
 
 end

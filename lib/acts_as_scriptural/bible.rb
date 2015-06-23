@@ -27,7 +27,8 @@ class ActsAsScriptural::Bible
   private
 
   def import_from_file
-    File.readlines("data/acts_as_scriptural/english.txt").each do |line|
+    datafile = File.dirname(__FILE__) + "/../../data/acts_as_scriptural/english.txt"
+    File.readlines(datafile).each do |line|
       book_name, book_index, num_chapters = line.chomp.split(',')
       book = ActsAsScriptural::Book.new(book_name, book_index.to_i, num_chapters.to_i)
       @namehash[book_name] = book
