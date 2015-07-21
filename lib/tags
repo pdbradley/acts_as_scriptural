@@ -1,0 +1,7 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+ActsAsScriptural	/Users/philip/code/acts_as_scriptural/lib/acts_as_scriptural.rb	/^class ActsAsScriptural$/;"	c	language:Ruby
+add_chapters	/Users/philip/code/acts_as_scriptural/lib/acts_as_scriptural.rb	/^  def add_chapters(parsed_reference)$/;"	f	language:Ruby	class:ActsAsScriptural
+bible	/Users/philip/code/acts_as_scriptural/lib/acts_as_scriptural.rb	/^  def bible$/;"	f	language:Ruby	class:ActsAsScriptural.add_chapters
+initialize	/Users/philip/code/acts_as_scriptural/lib/acts_as_scriptural.rb	/^  def initialize$/;"	f	language:Ruby	class:ActsAsScriptural
+lookup	/Users/philip/code/acts_as_scriptural/lib/acts_as_scriptural.rb	/^  def lookup$/;"	f	language:Ruby	class:ActsAsScriptural.add_chapters
+parse	/Users/philip/code/acts_as_scriptural/lib/acts_as_scriptural.rb	/^  def parse(str)$/;"	f	language:Ruby	class:ActsAsScriptural

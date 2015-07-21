@@ -38,6 +38,10 @@ describe ActsAsScriptural do
     end
   end
   describe "#parse invalid references" do
+    it "sets chapters to an empty array for nonsense" do
+      result = ActsAsScriptural.new.parse("ddddddkjkjka")
+      expect(result.chapters).to eq []
+    end
     it "ignores chapter ranges that are not biblical" do
       result = ActsAsScriptural.new.parse("Jude 1-2")
       expect(result.chapters).to eq [[65,1]]
