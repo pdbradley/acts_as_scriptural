@@ -7,10 +7,12 @@ class ActsAsScriptural
   end
 
   def parse(str)
-    references = str.split(',')
-    references.each do |ref| 
-      parsed_reference = Parser.new.parse_reference(ref)
-      add_chapters(parsed_reference) if parsed_reference
+    unless str.nil?
+      references = str.split(',')
+      references.each do |ref| 
+        parsed_reference = Parser.new.parse_reference(ref)
+        add_chapters(parsed_reference) if parsed_reference
+      end
     end
     self
   end

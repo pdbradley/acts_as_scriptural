@@ -38,6 +38,10 @@ describe ActsAsScriptural do
     end
   end
   describe "#parse invalid references" do
+    it "sets chapters to an empty array for nil" do
+      result = ActsAsScriptural.new.parse(nil)
+      expect(result.chapters).to eq []
+    end
     it "sets chapters to an empty array for nonsense" do
       result = ActsAsScriptural.new.parse("ddddddkjkjka")
       expect(result.chapters).to eq []
